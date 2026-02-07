@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Idk hehe️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #e91e63;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        #noBtn {
+            background: #9e9e9e;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1 id="message">Hiii babyyy!!</h1>
+
+    <div class="buttons">
+        <button id="nextBtn" onclick="nextMessage()">Next</button>
+        <button id="yesBtn" onclick="yes()" style="display:none;">Hays ano pa ba isasagot ko, symper yes duhh</button>
+        <button id="noBtn" onclick="shrinkNo()" style="display:none;">Nooo pangit mo🙄</button>
+    </div>
+</div>
+
+<script>
+    let step = 0;
+    let noScale = 1;
+    let yesScale = 1;
+
+    function nextMessage() {
+        const message = document.getElementById("message");
+        const nextBtn = document.getElementById("nextBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        if (step === 0) {
+            message.innerText = "Sooo...";
+        } else if (step === 1) {
+            message.innerText = "Ang dami na nating pinagsamahan, ups and downs, lefts and rights...";
+        } else if (step === 2) {
+            message.innerText = "Pero eto, tayong dalawa pa rin magkasama sa araw-araw.";
+        } else if (step === 3) {
+            message.innerText = "Di ko man masusulit yung paparating na Valentine's kasi possibly may pasok...";
+        } else if (step === 4) {
+            message.innerText = "I still wanna ask...";
+		} else if (step === 5) {
+			message.innerText = "Will you, my pretty girl, be my Valentine?";
+            nextBtn.style.display = "none";
+            yesBtn.style.display = "inline-block";
+            noBtn.style.display = "inline-block";
+        }
+
+        step++;
+    }
+
+    function shrinkNo() {
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+
+        noScale -= 0.2;
+        yesScale += 0.2;
+
+        // Shrink NO
+        if (noScale <= 0) {
+            noBtn.style.display = "none";
+        } else {
+            noBtn.style.transform = `scale(${noScale})`;
+            noBtn.style.opacity = noScale;
+        }
+
+        // Grow YES
+        yesBtn.style.transform = `scale(${yesScale})`;
+    }
+
+    function yes() {
+        const message = document.getElementById("message");
+        const buttons = document.querySelector(".buttons");
+
+        message.innerText = "Yeaaaa that's my good girllll, Advance Happy Valentine's Day!! 💘🥰";
+        buttons.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
